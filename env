@@ -1,0 +1,2 @@
+alias down='docker-compose down --rmi all --remove-orphans'
+alias up='docker-compose up --build -d'
