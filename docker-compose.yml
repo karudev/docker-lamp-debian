@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  debian:
+    container_name: debian
+    build: .
+    volumes:
+      - www:/var/www
+
+volumes:
+  www:
