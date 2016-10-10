@@ -3,8 +3,9 @@ MAINTAINER Dolyveen Renault <renault@karudev.fr>
 
 #COPY src/ /var/www/html/
 RUN apt-get update && apt-get install -y vim
-# Install pdo_mysql
-RUN docker-php-ext-install pdo pdo_mysql
+RUN apt-get install -y zlib1g-dev
+# Install pdo_mysql, zip
+RUN docker-php-ext-install pdo pdo_mysql zip
 # Install GIT
 RUN apt-get -y install git
 # Install composer
