@@ -2,12 +2,12 @@ version: '2'
 
 services:
   apache:
-    container_name: apache
+    container_name: php7-apache
     build: .
     ports:
       - 80:80
     volumes:
-      - www/:/usr/local/apache2/htdocs/
+      - src/:/var/www/html
 
 volumes:
-  www:
+  src:
