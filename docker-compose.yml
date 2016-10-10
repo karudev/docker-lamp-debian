@@ -1,11 +1,13 @@
 version: '2'
 
 services:
-  debian:
-    container_name: debian
+  apache:
+    container_name: apache
     build: .
+    ports:
+      - 80:80
     volumes:
-      - www:/var/www
+      - www/:/usr/local/apache2/htdocs/
 
 volumes:
   www:
