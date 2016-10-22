@@ -1,4 +1,4 @@
-# DEBIAN LAMP ENVIRONEMENT ON DOCKER
+# DEBIAN LAMP ENVIRONEMENT + JAVA 7 ON DOCKER
 
 Build by Dolyveen Renault, Karudev Informatique
 

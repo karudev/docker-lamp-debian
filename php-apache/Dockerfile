@@ -13,3 +13,5 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 RUN php composer-setup.php
 RUN php composer-setup.php --install-dir=/usr/bin --filename=composer
 RUN php -r "unlink('composer-setup.php');"
+# Install Java 7
+RUN apt-get update && apt-get install -y openjdk-7-jre && apt-get install -y openjdk-7-jdk
