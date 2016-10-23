@@ -12,6 +12,7 @@ services:
       - db
     volumes:
       - ./src/:/var/www/html
+#    - ./lib/:/usr/share/java/
   
   db:
     build: ./mysql
@@ -38,5 +39,7 @@ services:
 volumes:
   src:
     driver: local
+#  lib:
+#    driver: local
   db:
     driver: local
