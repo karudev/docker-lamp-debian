@@ -1,4 +1,4 @@
-alias down='docker-compose down --rmi all --remove-orphans'
-alias up='docker-compose up --build -d'
+alias down='docker-compose down --remove-orphans'
+alias up='docker-compose up -d'
 alias dexweb='docker exec -it php-apache bash'
 alias dexdb='docker exec -it mysql bash'
