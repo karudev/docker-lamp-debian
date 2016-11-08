@@ -12,6 +12,7 @@ services:
     depends_on:
       - db
       - memcached
+      - mongodb
     volumes:
       - ./src/:/var/www/html
 #    - ./lib/:/usr/share/java/
@@ -29,6 +30,15 @@ services:
     volumes:
       - ./db:/var/lib/mysql
   
+  mongodb:
+    image: mongo:3.2.10
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongodb:/var/lib/mongodb
+    restart: always 
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin
@@ -52,3 +62,6 @@ volumes:
 #    driver: local
   db:
     driver: local
+  mongodb:
+    driver: local
+  
