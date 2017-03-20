@@ -2,6 +2,7 @@ FROM php:7.0.12-apache
 MAINTAINER Dolyveen Renault <renault@karudev.fr>
 
 COPY etc/php/php.ini /usr/local/etc/php
+RUN a2enmod rewrite
 
 # Install vim
 RUN apt-get update && apt-get install -y vim

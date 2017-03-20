@@ -25,7 +25,7 @@ services:
     ports:
       - 3306:3306
     environment:
-      MYSQL_ROOT_PASSWORD: xxxx
+      MYSQL_ROOT_PASSWORD: karudev19871029
     volumes:
       - ./mysql/db:/var/lib/mysql
   
