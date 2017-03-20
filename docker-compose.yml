@@ -8,13 +8,15 @@ services:
       - 80:80
     links:
       - db
-      - memcached
+#      - memcached
     depends_on:
       - db
-      - memcached
-      - mongodb
+#      - memcached
+#      - mongodb
     volumes:
-      - ./src/:/var/www/html
+      - /var/www/html:/var/www/html
+      - ./php-apache/logs:/var/log/apache2
+      - ./php-apache/vhosts/vhosts.conf:/etc/apache2/sites-enabled/000-default.conf
 #    - ./lib/:/usr/share/java/
   
   db:
@@ -23,21 +25,18 @@ services:
     ports:
       - 3306:3306
     environment:
-      MYSQL_ROOT_PASSWORD: docker
-      MYSQL_USER: test
-      MYSQL_PASSWORD: 123456
-      MYSQL_DATABASE: test
+      MYSQL_ROOT_PASSWORD: xxxx
     volumes:
-      - ./db:/var/lib/mysql
+      - ./mysql/db:/var/lib/mysql
   
-  mongodb:
-    image: mongo:3.2.10
-    container_name: mongodb
-    ports:
-      - "27017:27017"
-    volumes:
-      - ./mongodb:/var/lib/mongodb
-    restart: always 
+#  mongodb:
+#    image: mongo:3.2.10
+#    container_name: mongodb
+#    ports:
+#      - "27017:27017"
+#    volumes:
+#      - ./mongodb:/var/lib/mongodb
+#   restart: always 
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -48,12 +47,12 @@ services:
     ports:
      - 8080:80
   
-  memcached:
-    image: memcached:1.4.33
-    container_name: memcached
-    restart: always
-    ports:
-     - 11211:11211
+#  memcached:
+#    image: memcached:1.4.33
+#    container_name: memcached
+#    restart: always
+#    ports:
+#     - 11211:11211
  
 volumes:
   src:
@@ -62,6 +61,6 @@ volumes:
 #    driver: local
   db:
     driver: local
-  mongodb:
-    driver: local
+#  mongodb:
+#    driver: local
   
