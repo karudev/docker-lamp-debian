@@ -5,8 +5,8 @@ COPY etc/php/php.ini /usr/local/etc/php
 RUN a2enmod rewrite
 
 # Install vim
-RUN apt-get update && apt-get install -y vim
-RUN apt-get install -y zlib1g-dev
+RUN apt-get update && apt-get install -y vim zlib1g-dev wget
+
 # Install GIT
 RUN apt-get -y install git
 # Install pdo_mysql, zip
@@ -39,6 +39,10 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 RUN php composer-setup.php
 RUN php composer-setup.php --install-dir=/usr/bin --filename=composer
 RUN php -r "unlink('composer-setup.php');"
+# Install PHPUNIT
+RUN wget https://phar.phpunit.de/phpunit-6.1.phar \
+    && chmod +x phpunit-6.1.phar \
+	&& mv phpunit-6.1.phar /usr/local/bin/phpunit
 # Install Java 7
 #RUN apt-get install -y openjdk-7-jre --fix-missing \
 #    && apt-get install -y openjdk-7-jdk --fix-missing \ 

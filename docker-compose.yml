@@ -29,14 +29,14 @@ services:
     volumes:
       - ./mysql/db:/var/lib/mysql
   
-#  mongodb:
-#    image: mongo:3.2.10
-#    container_name: mongodb
-#    ports:
-#      - "27017:27017"
-#    volumes:
-#      - ./mongodb:/var/lib/mongodb
-#   restart: always 
+ # mongodb:
+ #   image: mongo:3.2.10
+ #   container_name: mongodb
+ #   ports:
+ #     - "27017:27017"
+ #   volumes:
+ #     - ./mongodb:/var/lib/mongodb
+ #   restart: always 
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -47,12 +47,12 @@ services:
     ports:
      - 8080:80
   
-#  memcached:
-#    image: memcached:1.4.33
-#    container_name: memcached
-#    restart: always
-#    ports:
-#     - 11211:11211
+ # memcached:
+ #   image: memcached:1.4.33
+ #   container_name: memcached
+ #   restart: always
+ #   ports:
+ #    - 11211:11211
  
 volumes:
   src:
@@ -61,6 +61,6 @@ volumes:
 #    driver: local
   db:
     driver: local
-#  mongodb:
-#    driver: local
+ # mongodb:
+ #   driver: local
   
