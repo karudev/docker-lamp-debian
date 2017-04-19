@@ -14,9 +14,9 @@ services:
 #      - memcached
 #      - mongodb
     volumes:
-      - /var/www/html:/var/www/html
-      - ./php-apache/logs:/var/log/apache2
-      - ./php-apache/vhosts/vhosts.conf:/etc/apache2/sites-enabled/000-default.conf
+      - ./src/php:/var/www/html
+#      - ./php-apache/logs:/var/log/apache2
+#      - ./php-apache/vhosts/vhosts.conf:/etc/apache2/sites-enabled/000-default.conf
 #    - ./lib/:/usr/share/java/
   
   db:

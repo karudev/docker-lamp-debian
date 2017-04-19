@@ -4,15 +4,24 @@ MAINTAINER Dolyveen Renault <renault@karudev.fr>
 COPY etc/php/php.ini /usr/local/etc/php
 RUN a2enmod rewrite
 
-# Install vim
-RUN apt-get update && apt-get install -y vim zlib1g-dev wget
+# Install vim..
+RUN apt-get update && apt-get install -y vim zlib1g-dev libxml2-dev wget git
 
-# Install GIT
-RUN apt-get -y install git
 # Install pdo_mysql, zip
 RUN docker-php-ext-install pdo pdo_mysql zip
 # Install opcache
 RUN docker-php-ext-install opcache
+
+# Install phpdbg
+RUN docker-php-source extract \
+    && cd /usr/src/php \
+	&& ./buildconf --force \
+    && ./configure --enable-phpdbg \
+	&& make -j8 \
+	&& make install-phpdbg \
+	&& make clean \
+	&& docker-php-source delete
+
 # Install Xdebug
 #RUN apt-get -y install php5-xdebug \
 #    && pecl install 'xdebug'
