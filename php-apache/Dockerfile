@@ -8,7 +8,7 @@ RUN a2enmod rewrite
 RUN apt-get update && apt-get install -y vim zlib1g-dev libxml2-dev wget git
 
 # Install pdo_mysql, zip
-RUN docker-php-ext-install pdo pdo_mysql zip
+RUN docker-php-ext-install pdo pdo_mysql zip mysqli
 # Install opcache
 RUN docker-php-ext-install opcache
 
