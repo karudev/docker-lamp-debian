@@ -28,6 +28,7 @@ services:
       MYSQL_ROOT_PASSWORD: XXXX
     volumes:
       - ./mysql/db:/var/lib/mysql
+    command: mysqld --sql_mode=""
   
  # mongodb:
  #   image: mongo:3.2.10
