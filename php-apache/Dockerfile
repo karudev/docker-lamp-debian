@@ -7,34 +7,35 @@ RUN a2enmod rewrite
 # Install vim..
 RUN apt-get update && apt-get install -y vim zlib1g-dev libxml2-dev wget git
 
-# Install pdo_mysql, zip
-RUN docker-php-ext-install pdo pdo_mysql zip mysqli
+# Install pdo_mysql, zip, soap, mysqli
+RUN docker-php-ext-install pdo pdo_mysql zip soap mysqli
+
 # Install opcache
 RUN docker-php-ext-install opcache
 
 # Install Ted et rtf2pdf.sh
-RUN apt-get install -y gdebi
-RUN cd /tmp
-RUN wget http://ftp.us.debian.org/debian/pool/main/libj/libjpeg8/libjpeg8_8d1-2_amd64.deb \
-   && wget http://security.ubuntu.com/ubuntu/pool/main/t/tiff/libtiff4_3.9.5-2ubuntu1.9_amd64.deb \
-   && wget http://ftp.us.debian.org/debian/pool/main/libp/libpaper/libpaper1_1.1.24+nmu5_amd64.deb \
-   && wget http://ftp.nluug.nl/pub/editors/ted/ted-2.23-amd64.deb \
-   && sudo dpkg -i libjpeg8_8d1-2_amd64.deb \
-   && sudo dpkg -i libtiff4_3.9.5-2ubuntu1.9_amd64.deb \
-   && sudo dpkg -i libpaper1_1.1.24+nmu5_amd64.deb \
-   && sudo dpkg -i ted-2.23-amd64.deb
-RUN apt-get update -qq && apt-get install -y ghostscript imagemagick
-RUN cd /usr/bin/ && wget http://ftp.nluug.nl/pub/editors/ted/rtf2pdf.sh && chmod 775 rtf2pdf.sh
+#RUN apt-get update && apt-get install -y gdebi
+#RUN cd /tmp
+#RUN wget http://ftp.us.debian.org/debian/pool/main/libj/libjpeg8/libjpeg8_8d1-2_amd64.deb \
+#   && wget http://security.ubuntu.com/ubuntu/pool/main/t/tiff/libtiff4_3.9.5-2ubuntu1.9_amd64.deb \
+#   && wget http://ftp.us.debian.org/debian/pool/main/libp/libpaper/libpaper1_1.1.24+nmu5_amd64.deb \
+#   && wget http://ftp.nluug.nl/pub/editors/ted/ted-2.23-amd64.deb \
+#   && sudo dpkg -i libjpeg8_8d1-2_amd64.deb \
+#   && sudo dpkg -i libtiff4_3.9.5-2ubuntu1.9_amd64.deb \
+#   && sudo dpkg -i libpaper1_1.1.24+nmu5_amd64.deb \
+#   && sudo dpkg -i ted-2.23-amd64.deb
+#RUN apt-get update -qq && apt-get install -y ghostscript imagemagick
+#RUN cd /usr/bin/ && wget http://ftp.nluug.nl/pub/editors/ted/rtf2pdf.sh && chmod 775 rtf2pdf.sh
 
 # Install phpdbg
-RUN docker-php-source extract \
-    && cd /usr/src/php \
-	&& ./buildconf --force \
-    && ./configure --enable-phpdbg \
-	&& make -j8 \
-	&& make install-phpdbg \
-	&& make clean \
-	&& docker-php-source delete
+#RUN docker-php-source extract \
+#    && cd /usr/src/php \
+#	&& ./buildconf --force \
+#    && ./configure --enable-phpdbg \
+#	&& make -j8 \
+#	&& make install-phpdbg \
+#	&& make clean \
+#	&& docker-php-source delete
 
 # Install Xdebug
 #RUN apt-get -y install php5-xdebug \
