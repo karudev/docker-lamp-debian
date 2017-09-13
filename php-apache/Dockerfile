@@ -5,12 +5,21 @@ COPY etc/php/php.ini /usr/local/etc/php
 RUN a2enmod rewrite
 
 # Install vim..
-RUN apt-get update && apt-get install -y vim zlib1g-dev libxml2-dev wget git
+RUN apt-get update && apt-get install -y vim zlib1g-dev libxml2-dev libssh2-1-dev unzip wget git
 
-# Install pdo_mysql, zip, soap
-RUN docker-php-ext-install pdo pdo_mysql zip soap
+# Install pdo_mysql, zip, soap, mysqli
+RUN docker-php-ext-install pdo pdo_mysql zip soap mysqli
+
 # Install opcache
 RUN docker-php-ext-install opcache
+
+# ssh2 module 
+RUN cd /tmp && wget https://github.com/Sean-Der/pecl-networking-ssh2/archive/php7.zip \
+    && unzip php7.zip \
+    && cd pecl-networking-ssh2-php7 \
+    && phpize \
+    && ./configure \
+    && make && make install
 
 # Install Ted et rtf2pdf.sh
 #RUN apt-get update && apt-get install -y gdebi
