@@ -19,7 +19,8 @@ RUN cd /tmp && wget https://github.com/Sean-Der/pecl-networking-ssh2/archive/php
     && cd pecl-networking-ssh2-php7 \
     && phpize \
     && ./configure \
-    && make && make install
+    && make && make install \
+    && echo "extension=ssh2.so" > /usr/local/etc/php/conf.d/ext-ssh2.ini
 
 # Install Ted et rtf2pdf.sh
 #RUN apt-get update && apt-get install -y gdebi
