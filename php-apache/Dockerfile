@@ -76,6 +76,12 @@ RUN php -r "unlink('composer-setup.php');"
 RUN wget https://phar.phpunit.de/phpunit-6.1.phar \
     && chmod +x phpunit-6.1.phar \
 	&& mv phpunit-6.1.phar /usr/local/bin/phpunit
+
+# Install Symfony installer
+RUN mkdir -p /usr/local/bin \
+   && curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony \
+   && chmod a+x /usr/local/bin/symfony
+
 # Install Java 7
 #RUN apt-get install -y openjdk-7-jre --fix-missing \
 #    && apt-get install -y openjdk-7-jdk --fix-missing \ 
