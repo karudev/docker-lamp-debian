@@ -1,4 +1,4 @@
-FROM php:7.0.12-apache
+FROM php:7.1-apache
 MAINTAINER Dolyveen Renault <renault@karudev.fr>
 
 COPY etc/php/php.ini /usr/local/etc/php
@@ -14,13 +14,13 @@ RUN docker-php-ext-install pdo pdo_mysql zip soap mysqli
 RUN docker-php-ext-install opcache
 
 # ssh2 module 
-RUN cd /tmp && wget https://github.com/Sean-Der/pecl-networking-ssh2/archive/php7.zip \
-    && unzip php7.zip \
-    && cd pecl-networking-ssh2-php7 \
-    && phpize \
-    && ./configure \
-    && make && make install \
-    && echo "extension=ssh2.so" > /usr/local/etc/php/conf.d/ext-ssh2.ini
+#RUN cd /tmp && wget https://github.com/Sean-Der/pecl-networking-ssh2/archive/php7.zip \
+#    && unzip php7.zip \
+#    && cd pecl-networking-ssh2-php7 \
+#    && phpize \
+#    && ./configure \
+#    && make && make install \
+#    && echo "extension=ssh2.so" > /usr/local/etc/php/conf.d/ext-ssh2.ini
 
 # Install Ted et rtf2pdf.sh
 #RUN apt-get update && apt-get install -y gdebi
