@@ -2,7 +2,7 @@
 
 Change Mysql Permissions
 --
-GRANT ALL PRIVILEGES ON *.* TO root@'%' IDENTIFIED BY ‘XXXX' WITH GRANT OPTION;
+grant all privileges on *.* to 'root'@'%' with grant option;
 
 FLUSH PRIVILEGES;
 
